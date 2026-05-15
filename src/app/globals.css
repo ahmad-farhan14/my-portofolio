@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050505;
+  --foreground: #e5e7eb;
+  --muted: #94a3b8;
+  --card: #0b0b0b;
+  --neon-green: #00ff99;
+  --neon-cyan: #00d9ff;
+  --neon-purple: #8b5cf6;
+  --neon-orange: #ffb347;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-space-mono), "Space Mono", monospace;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.35);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+.font-press {
+  font-family: var(--font-press-start), "Press Start 2P", monospace;
+}
+
+.font-vt {
+  font-family: var(--font-vt323), "VT323", monospace;
+}
+
+.crt-text {
+  text-shadow: 0 0 12px rgba(0, 217, 255, 0.4), 0 0 30px rgba(0, 255, 153, 0.25);
+}
+
+.glitch {
+  position: relative;
+  text-shadow: 2px 0 rgba(0, 217, 255, 0.6), -2px 0 rgba(255, 179, 71, 0.6);
+  animation: glitch 2.8s infinite;
+}
+
+.scanlines {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.2;
+  mix-blend-mode: screen;
+  z-index: 30;
+  animation: scan-move 6s linear infinite;
+}
+
+.flicker {
+  animation: flicker 3.5s infinite;
+}
+
+.fine-pointer-only {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fine-pointer-only {
+    display: block;
+  }
+}
+
+@keyframes scan-move {
+  0% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(10%);
+  }
+}
+
+@keyframes glitch {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(1px, -1px);
+  }
+  40% {
+    transform: translate(-1px, 1px);
+  }
+  60% {
+    transform: translate(1px, 1px);
+  }
+  80% {
+    transform: translate(-1px, -1px);
+  }
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+  70% {
+    opacity: 0.95;
+  }
+}

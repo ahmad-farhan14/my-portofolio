@@ -25,6 +25,12 @@ import taskflow2 from "../../assets/TaskFlow2.png";
 import weatherDash1 from "../../assets/WeatherDash1.png";
 import weatherDash2 from "../../assets/WeatherDash2.png";
 import weatherDash3 from "../../assets/WeatherDash3.png";
+import seblakWsp1 from "../../assets/SeblakWSP1.png";
+import seblakWsp2 from "../../assets/SeblakWSP2.png";
+import seblakWsp3 from "../../assets/SeblakWSP3.png";
+import seblakWsp4 from "../../assets/SeblakWSP4.png";
+import seblakWsp5 from "../../assets/SeblakWSP5.png";
+import seblakWsp6 from "../../assets/SeblaksWSP6.png";
 
 const sections = [
   { id: "hero", label: "Hero" },
@@ -58,6 +64,15 @@ const projects = [
     images: [taskflow1, taskflow2],
     demoUrl: "https://ahmad-farhan14.github.io/landing-page/",
     githubUrl: "https://github.com/ahmad-farhan14/landing-page",
+  },
+  {
+    title: "Seblak WSP",
+    summary:
+      "Smart POS & self-service ordering system for culinary business featuring custom menu options, real-time order monitoring, and automated payment gateway integration.",
+    stack: ["Laravel", "Tailwind CSS", "Midtrans API", "MySQL"],
+    images: [seblakWsp1, seblakWsp2, seblakWsp3, seblakWsp4, seblakWsp5, seblakWsp6],
+    demoUrl: "#",
+    githubUrl: "https://github.com/ahmad-farhan14/seblak-app",
   },
   {
     title: "JokiKan",

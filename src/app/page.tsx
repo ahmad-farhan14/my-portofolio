@@ -397,10 +397,10 @@ export default function Home() {
                 SYSTEM INITIALIZATION COMPLETE
               </p>
               <h1 className="glitch font-press text-3xl leading-snug text-white md:text-4xl">
-                FRONTEND INTERFACE ARCHIVE
+                DEVELOPER ARCHIVE
               </h1>
               <p className="text-sm text-zinc-400 md:text-base">
-                A frontend-focused developer building interactive web experiences with retro-futuristic aesthetics, responsive systems, and modern UI design.
+                A Full Stack frontend-focused developer building interactive web experiences with responsive systems, and modern UI design.
               </p>
               <div className="flex flex-wrap gap-4">
                 <a

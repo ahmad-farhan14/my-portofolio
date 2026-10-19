@@ -58,11 +58,21 @@ const sections = [
   { id: "contact", label: "Contact" },
 ];
 
-const techStack = ["HTML", "CSS", "JavaScript", "React", "Tailwind CSS"];
+const techStack = [
+  "TypeScript",
+  "JavaScript",
+  "React",
+  "Next.js",
+  "Flutter",
+  "Dart",
+  "Tailwind CSS",
+  "Supabase",
+  "Vercel",
+];
 
-const backendStack = ["Laravel", "Flask", "MySQL"];
+const backendStack = ["Laravel", "MySQL", "Python"];
 
-const toolsStack = ["GitHub", "VSCode", "Figma", "Python"];
+const toolsStack = ["Gemini AI", "Git", "Basecamp"];
 
 const projects = [
   {
@@ -76,7 +86,8 @@ const projects = [
   },
   {
     title: "Taskflow",
-    summary: "Productivity-focused task management with clean layouts and modern workspace interactions.",
+    summary:
+      "Productivity-focused task management tool featuring clean workspace interactions and custom task categories.",
     stack: ["UI/UX", "Web App", "Productivity"],
     images: [taskflow1, taskflow2],
     demoUrl: "https://ahmad-farhan14.github.io/landing-page/",
@@ -85,7 +96,7 @@ const projects = [
   {
     title: "Seblak WSP",
     summary:
-      "Smart POS & self-service ordering system for culinary business featuring custom menu options, real-time order monitoring, and automated payment gateway integration.",
+      "Smart POS & self-service ordering platform for culinary business featuring custom menu options, real-time order tracking, and Midtrans payment gateway.",
     stack: ["Laravel", "Tailwind CSS", "Midtrans API", "MySQL"],
     images: [seblakWsp1, seblakWsp2, seblakWsp3, seblakWsp4, seblakWsp5, seblakWsp6],
     demoUrl: "#",
@@ -93,7 +104,8 @@ const projects = [
   },
   {
     title: "JokiKan",
-    summary: "Gaming service platform concept featuring modular landing sections, service showcases, and modern gaming-themed UI.",
+    summary:
+      "Gaming service platform UI concept featuring modular landing sections, service showcases, and modern gaming-themed UI.",
     stack: ["UI/UX", "Landing Page", "Branding"],
     images: [jokikan1, jokikan2, jokikan3],
     demoUrl:
@@ -144,7 +156,7 @@ const projects = [
   {
     title: "SkillFlow",
     summary:
-      "Interactive daily micro-learning & skill roadmap tracking web app with split-view media reader and Proof of Learning modules.",
+      "Interactive daily micro-learning & skill roadmap tracking web app featuring split-view media readers and Proof of Learning modules.",
     stack: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
     images: [skillFlow1, skillFlow2, skillFlow3, skillFlow4, skillFlow5],
     demoUrl: "https://skillflow-vert.vercel.app",
@@ -154,7 +166,7 @@ const projects = [
   {
     title: "SpendWise",
     summary:
-      "Global cash flow & finance tracker supporting real-time multi-currency exchange conversion and safe-to-spend balance calculations.",
+      "Global cash flow & personal finance tracker supporting real-time multi-currency exchange conversion and safe-to-spend balance calculations.",
     stack: ["Next.js", "TypeScript", "Supabase", "ExchangeRate API"],
     images: [spendWise1, spendWise2, spendWise3, spendWise4],
     demoUrl: "https://spend-wise-web-nine.vercel.app",
@@ -164,7 +176,7 @@ const projects = [
   {
     title: "DesignReady",
     summary:
-      "Interactive quality-control & handoff tool for designers featuring automated checklist generation, multi-tenant team workspaces, and image previewers.",
+      "Interactive design handoff & quality-control tool featuring automated checklist generation, multi-tenant team workspaces, and image previewers.",
     stack: ["React", "TypeScript", "Supabase", "Tailwind CSS"],
     images: [designReady1, designReady2, designReady3],
     demoUrl: "https://designready-app-eta.vercel.app",
@@ -487,7 +499,7 @@ export default function Home() {
                 Frontend Developer | Web Developer
               </p>
               <p className="text-sm text-zinc-400 md:text-base">
-                A frontend-focused full-stack developer building responsive web experiences, thoughtful interfaces, and practical tools.
+                Informatics student at ITENAS Bandung & Web Developer experienced in building production-ready web applications using Next.js, React, TypeScript, Supabase, and AI-assisted workflows.
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
@@ -581,7 +593,7 @@ export default function Home() {
               <span className="ml-auto text-emerald-300/70">about.exe</span>
             </div>
             <p className="mt-6 text-sm text-zinc-300 md:text-base">
-              Frontend-focused fullstack developer with an interest in modern web development, responsive design, and clean user interfaces. Continuously learning and developing technical skills through personal and academic projects.
+              Informatics student at ITENAS Bandung & Web Developer experienced in building production-ready web applications using Next.js, React, TypeScript, Supabase, and AI-assisted workflows.
 
             </p>
           </div>

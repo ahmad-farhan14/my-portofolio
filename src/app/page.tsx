@@ -4,6 +4,9 @@ import { motion, useMotionValue, useScroll, useSpring } from "framer-motion";
 import Image, { type StaticImageData } from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import chessImage from "../../assets/Chess Game.png";
+import designReady1 from "../../assets/dsready1.png";
+import designReady2 from "../../assets/dsready2.png";
+import designReady3 from "../../assets/dsready3.png";
 import eduProUi1 from "../../assets/EduProUI1.png";
 import eduProUi2 from "../../assets/EduProUI2.png";
 import eduProUi3 from "../../assets/EduProUI3.png";
@@ -20,6 +23,20 @@ import mediaPembelajaran2 from "../../assets/MediaPembelajaran2.png";
 import mediaPembelajaran3 from "../../assets/MediaPembelajaran3.png";
 import pfp from "../../assets/pfp.jpeg";
 import pulseBoard from "../../assets/PulseBoard.png";
+import gigRate1 from "../../assets/gigrate1.png";
+import gigRate2 from "../../assets/gigrate2.png";
+import gigRate3 from "../../assets/gigrate3.png";
+import gigRate4 from "../../assets/gigrate4.png";
+import gigRate5 from "../../assets/gigrate5.png";
+import skillFlow1 from "../../assets/SkillFlow1.png";
+import skillFlow2 from "../../assets/SkillFlow2.png";
+import skillFlow3 from "../../assets/SkillFlow3.png";
+import skillFlow4 from "../../assets/SkillFlow4.png";
+import skillFlow5 from "../../assets/SkillFlow5.png";
+import spendWise1 from "../../assets/spendws1.png";
+import spendWise2 from "../../assets/spendws2.png";
+import spendWise3 from "../../assets/spendws3.png";
+import spendWise4 from "../../assets/spendws4.png";
 import taskflow1 from "../../assets/Taskflow1.png";
 import taskflow2 from "../../assets/TaskFlow2.png";
 import weatherDash1 from "../../assets/WeatherDash1.png";
@@ -124,36 +141,66 @@ const projects = [
     demoUrl: "https://ahmad-farhan14.github.io/Weather-Dash/",
     githubUrl: "https://github.com/ahmad-farhan14/Weather-Dash",
   },
+  {
+    title: "SkillFlow",
+    summary:
+      "Interactive daily micro-learning & skill roadmap tracking web app with split-view media reader and Proof of Learning modules.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
+    images: [skillFlow1, skillFlow2, skillFlow3, skillFlow4, skillFlow5],
+    demoUrl: "https://skillflow-vert.vercel.app",
+    githubUrl: null,
+    privateRepository: true,
+  },
+  {
+    title: "SpendWise",
+    summary:
+      "Global cash flow & finance tracker supporting real-time multi-currency exchange conversion and safe-to-spend balance calculations.",
+    stack: ["Next.js", "TypeScript", "Supabase", "ExchangeRate API"],
+    images: [spendWise1, spendWise2, spendWise3, spendWise4],
+    demoUrl: "https://spend-wise-web-nine.vercel.app",
+    githubUrl: null,
+    privateRepository: true,
+  },
+  {
+    title: "DesignReady",
+    summary:
+      "Interactive quality-control & handoff tool for designers featuring automated checklist generation, multi-tenant team workspaces, and image previewers.",
+    stack: ["React", "TypeScript", "Supabase", "Tailwind CSS"],
+    images: [designReady1, designReady2, designReady3],
+    demoUrl: "https://designready-app-eta.vercel.app",
+    githubUrl: null,
+    privateRepository: true,
+  },
+  {
+    title: "GigRate",
+    summary:
+      "Freelance rate & pricing strategy calculator supporting custom platform fee presets, tax buffers, and gross rate calculations across global currencies.",
+    stack: ["React", "JavaScript", "Tailwind CSS", "Vercel"],
+    images: [gigRate1, gigRate2, gigRate3, gigRate4, gigRate5],
+    demoUrl: "https://gigrate-freelance-ca-7qqn.bolt.host/",
+    githubUrl: null,
+    privateRepository: true,
+  },
 ];
 
 const timeline = [
   {
     id: 1,
-    title: "Informatics Student",
-    period: "2023 - Present",
-    detail:
-      "Studying software development, UI/UX principles, and interactive web technologies through academic and independent projects.",
+    title: "SF Group — Founder's Associate Intern / Web Developer",
+    period: "Jul 2026 – Present",
+    detail: "Founder's Associate Intern / Web Developer at SF Group.",
   },
   {
     id: 2,
-    title: "Creative Web Developer",
-    period: "2024 - Present",
-    detail:
-      "Building modern web applications and interactive interfaces focused on responsive design and user experience.",
+    title: "Freelance Web Developer",
+    period: "2024 – Present",
+    detail: "Freelance web development.",
   },
   {
     id: 3,
-    title: "Personal Project Developer",
-    period: "2025 - Present",
-    detail:
-      "Building interactive web applications, dashboard systems, and frontend projects to improve development and UI/UX skills.",
-  },
-  {
-    id: 4,
-    title: "Frontend Developer Intern",
-    period: "2026 - Present",
-    detail:
-      "Internship at VINIX (MSIB 4).",
+    title: "Huawei ICT Competition — Participant",
+    period: "Oct 2026 – Present",
+    detail: "Participant in the Huawei ICT Competition.",
   },
 ];
 
@@ -170,6 +217,7 @@ export default function Home() {
   const [sfxEnabled, setSfxEnabled] = useState(true);
   const [loading, setLoading] = useState(true);
   const [bootDone, setBootDone] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -350,15 +398,16 @@ export default function Home() {
             <div>
               <p className="text-sm font-semibold">Ahmad Farhan Zilwansyah</p>
               <p className="text-xs text-emerald-300/70">
-                Frontend-Focused Fullstack Developer
+                Frontend Developer | Web Developer
               </p>
             </div>
           </div>
-          <nav className="hidden items-center gap-5 md:flex">
+          <nav aria-label="Main navigation" className="hidden items-center gap-5 md:flex">
             {sections.map((section) => (
               <a
                 key={section.id}
                 href={`#${section.id}`}
+                aria-current={activeSection === section.id ? "location" : undefined}
                 className={`text-xs uppercase tracking-[0.2em] transition ${
                   activeSection === section.id
                     ? "text-emerald-300"
@@ -369,14 +418,49 @@ export default function Home() {
               </a>
             ))}
           </nav>
-          <button
-            type="button"
-            onClick={toggleSfx}
-            className="rounded-full border border-emerald-500/40 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-emerald-300 hover:border-emerald-300"
-          >
-            SFX {sfxEnabled ? "ON" : "OFF"}
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={toggleSfx}
+              className="rounded-full border border-emerald-500/40 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-emerald-300 hover:border-emerald-300"
+              aria-pressed={sfxEnabled}
+            >
+              SFX {sfxEnabled ? "ON" : "OFF"}
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              className="rounded border border-emerald-500/40 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-emerald-300 hover:border-emerald-300 md:hidden"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
+            >
+              {mobileMenuOpen ? "Close" : "Menu"}
+            </button>
+          </div>
         </div>
+        {mobileMenuOpen && (
+          <nav
+            id="mobile-navigation"
+            aria-label="Mobile navigation"
+            className="grid gap-1 border-t border-emerald-500/10 px-6 py-3 md:hidden"
+          >
+            {sections.map((section) => (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                aria-current={activeSection === section.id ? "location" : undefined}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`rounded px-3 py-2 text-xs uppercase tracking-[0.2em] transition ${
+                  activeSection === section.id
+                    ? "bg-emerald-400/10 text-emerald-300"
+                    : "text-zinc-400 hover:bg-white/5 hover:text-emerald-300"
+                }`}
+              >
+                {section.label}
+              </a>
+            ))}
+          </nav>
+        )}
       </header>
 
       <motion.main
@@ -399,8 +483,11 @@ export default function Home() {
               <h1 className="glitch font-press text-3xl leading-snug text-white md:text-4xl">
                 DEVELOPER ARCHIVE
               </h1>
+              <p className="font-press text-[10px] uppercase tracking-[0.2em] text-emerald-300 md:text-xs">
+                Frontend Developer | Web Developer
+              </p>
               <p className="text-sm text-zinc-400 md:text-base">
-                A Full Stack frontend-focused developer building interactive web experiences with responsive systems, and modern UI design.
+                A frontend-focused full-stack developer building responsive web experiences, thoughtful interfaces, and practical tools.
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
@@ -414,6 +501,13 @@ export default function Home() {
                   className="rounded border border-cyan-400/60 bg-cyan-400/10 px-5 py-3 text-xs uppercase tracking-[0.2em] text-cyan-300 shadow-[0_0_12px_rgba(0,217,255,0.35)] transition hover:translate-y-[-2px]"
                 >
                   [ View Projects ]
+                </a>
+                <a
+                  href="/CV_Ahmad_Farhan_Zilwansyah.pdf"
+                  download
+                  className="rounded border border-violet-400/60 bg-violet-400/10 px-5 py-3 text-xs uppercase tracking-[0.2em] text-violet-300 shadow-[0_0_12px_rgba(139,92,246,0.3)] transition hover:translate-y-[-2px]"
+                >
+                  [ Download CV ]
                 </a>
               </div>
             </motion.div>
@@ -552,6 +646,10 @@ export default function Home() {
           transition={{ duration: 0.6 }}
         >
           <SectionHeader subtitle="Projects" title="Arcade Gallery" />
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-400">
+            A selection of web apps, dashboards, and interface explorations. Open
+            a live demo or source repository when one is available.
+          </p>
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
             {projects.map((project) => (
               <ProjectCard key={project.title} project={project} />
@@ -603,46 +701,85 @@ export default function Home() {
                 Feel free to connect for projects, collaboration, or development opportunities.
               </p>
               <div className="space-y-3">
-                <div className="rounded border border-emerald-500/30 bg-white/5 px-4 py-3">
+                <a
+                  href="mailto:ahmadfarhn14@gmail.com"
+                  className="block rounded border border-emerald-500/30 bg-white/5 px-4 py-3 transition hover:border-emerald-300"
+                >
                   Email: ahmadfarhn14@gmail.com
-                </div>
-                <div className="rounded border border-cyan-500/30 bg-white/5 px-4 py-3">
-                  GitHub: https://github.com/ahmad-farhan14
-                </div>
-                <div className="rounded border border-violet-500/30 bg-white/5 px-4 py-3">
-                  Instagram: https://www.instagram.com/adfrhnz_
-                </div>
+                </a>
+                <a
+                  href="https://github.com/ahmad-farhan14"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block rounded border border-cyan-500/30 bg-white/5 px-4 py-3 transition hover:border-cyan-300"
+                >
+                  GitHub: github.com/ahmad-farhan14
+                </a>
+                <a
+                  href="https://www.instagram.com/adfrhnz_"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block rounded border border-violet-500/30 bg-white/5 px-4 py-3 transition hover:border-violet-300"
+                >
+                  Instagram: @adfrhnz_
+                </a>
               </div>
             </div>
 
-            <form className="space-y-4 rounded-3xl border border-emerald-500/20 bg-black/60 p-6">
+            <form
+              className="space-y-4 rounded-3xl border border-emerald-500/20 bg-black/60 p-6"
+              onSubmit={(event) => {
+                event.preventDefault();
+                const formData = new FormData(event.currentTarget);
+                const name = String(formData.get("name") ?? "").trim();
+                const email = String(formData.get("email") ?? "").trim();
+                const message = String(formData.get("message") ?? "").trim();
+                const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+                const body = encodeURIComponent(
+                  `${message}\n\nFrom: ${name}\nEmail: ${email}`
+                );
+
+                window.location.href = `mailto:ahmadfarhn14@gmail.com?subject=${subject}&body=${body}`;
+              }}
+            >
               <div>
-                <label className="text-xs uppercase tracking-[0.2em] text-emerald-300">
+                <label htmlFor="contact-name" className="text-xs uppercase tracking-[0.2em] text-emerald-300">
                   Name
                 </label>
                 <input
+                  id="contact-name"
+                  name="name"
                   type="text"
                   placeholder="Type your name..."
+                  autoComplete="name"
+                  required
                   className="mt-2 w-full rounded border border-emerald-500/30 bg-black/60 px-4 py-3 text-sm text-emerald-200 outline-none focus:border-emerald-300"
                 />
               </div>
               <div>
-                <label className="text-xs uppercase tracking-[0.2em] text-cyan-300">
+                <label htmlFor="contact-email" className="text-xs uppercase tracking-[0.2em] text-cyan-300">
                   Email
                 </label>
                 <input
+                  id="contact-email"
+                  name="email"
                   type="email"
                   placeholder="Type your email..."
+                  autoComplete="email"
+                  required
                   className="mt-2 w-full rounded border border-cyan-500/30 bg-black/60 px-4 py-3 text-sm text-cyan-200 outline-none focus:border-cyan-300"
                 />
               </div>
               <div>
-                <label className="text-xs uppercase tracking-[0.2em] text-violet-300">
+                <label htmlFor="contact-message" className="text-xs uppercase tracking-[0.2em] text-violet-300">
                   Message
                 </label>
                 <textarea
+                  id="contact-message"
+                  name="message"
                   placeholder="Type your message..."
                   rows={4}
+                  required
                   className="mt-2 w-full rounded border border-violet-500/30 bg-black/60 px-4 py-3 text-sm text-violet-200 outline-none focus:border-violet-300"
                 />
               </div>
@@ -652,6 +789,9 @@ export default function Home() {
               >
                 Send Transmission
               </button>
+              <p className="text-xs text-zinc-500">
+                This opens your email app with the message ready to send.
+              </p>
             </form>
           </div>
         </motion.section>
@@ -683,8 +823,9 @@ type Project = {
   summary: string;
   stack: string[];
   images: StaticImageData[];
-  demoUrl: string;
-  githubUrl: string;
+  demoUrl: string | null;
+  githubUrl: string | null;
+  privateRepository?: boolean;
 };
 
 function ProjectCard({ project }: { project: Project }) {
@@ -708,22 +849,42 @@ function ProjectCard({ project }: { project: Project }) {
       className="group relative overflow-hidden rounded-3xl border border-cyan-400/20 bg-white/5 backdrop-blur"
     >
       <div className="relative h-40 overflow-hidden bg-black/60">
-        <Image
-          src={project.images[index]}
-          alt={`${project.title} preview ${index + 1}`}
-          className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
-          priority={index === 0}
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,217,255,0.25),transparent_70%)]" />
-        <div className="absolute inset-0 opacity-0 transition group-hover:opacity-100">
-          <div className="absolute inset-0 bg-black/50" />
-          <p className="relative z-10 flex h-full items-center justify-center font-press text-[10px] uppercase tracking-[0.4em] text-emerald-300">
-            Loading...
-          </p>
-        </div>
-        <div className="absolute bottom-2 right-2 rounded border border-emerald-400/40 bg-black/60 px-2 py-1 text-[10px] uppercase tracking-[0.2em] text-emerald-300">
-          {index + 1}/{project.images.length}
-        </div>
+        {project.images.length > 0 ? (
+          <>
+            <Image
+              src={project.images[index]}
+              alt={`${project.title} preview ${index + 1}`}
+              className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
+              priority={index === 0}
+            />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,217,255,0.25),transparent_70%)]" />
+            <div className="absolute inset-0 flex items-end justify-start p-3 opacity-0 transition group-hover:opacity-100">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+              <p className="relative z-10 font-press text-[9px] uppercase tracking-[0.2em] text-emerald-300">
+                Project preview
+              </p>
+            </div>
+            <div className="absolute bottom-2 right-2 rounded border border-emerald-400/40 bg-black/60 px-2 py-1 text-[10px] uppercase tracking-[0.2em] text-emerald-300">
+              {index + 1}/{project.images.length}
+            </div>
+          </>
+        ) : (
+          <div className="flex h-full items-center justify-center bg-[radial-gradient(circle_at_center,rgba(0,217,255,0.12),transparent_68%),linear-gradient(135deg,#090d0d,#050505_55%,#0d0814)] p-5">
+            <div className="w-full border border-emerald-400/30 bg-black/60 p-4 shadow-[0_0_24px_rgba(0,255,153,0.08)]">
+              <p className="font-vt text-sm tracking-[0.25em] text-cyan-300">
+                PROJECT FILE // ONLINE
+              </p>
+              <p className="mt-2 font-press text-xs uppercase tracking-[0.18em] text-emerald-300">
+                {project.title}
+              </p>
+              <div className="mt-4 flex gap-1">
+                <span className="h-1.5 w-8 bg-emerald-400/70" />
+                <span className="h-1.5 w-5 bg-cyan-400/60" />
+                <span className="h-1.5 w-10 bg-violet-400/50" />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
       <div className="space-y-4 p-5">
         <div>
@@ -743,18 +904,44 @@ function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
         <div className="flex gap-3">
-          <a
-            href={project.demoUrl}
-            className="flex-1 rounded border border-emerald-400/40 px-3 py-2 text-center text-xs uppercase tracking-[0.2em] text-emerald-300"
-          >
-            Demo
-          </a>
-          <a
-            href={project.githubUrl}
-            className="flex-1 rounded border border-cyan-400/40 px-3 py-2 text-center text-xs uppercase tracking-[0.2em] text-cyan-300"
-          >
-            GitHub
-          </a>
+          {project.demoUrl ? (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="flex-1 rounded border border-emerald-400/40 px-3 py-2 text-center text-xs uppercase tracking-[0.2em] text-emerald-300 transition hover:bg-emerald-400/10"
+            >
+              Demo
+            </a>
+          ) : (
+            <span className="flex-1 cursor-not-allowed rounded border border-zinc-700 px-3 py-2 text-center text-xs uppercase tracking-[0.2em] text-zinc-500">
+              Demo unavailable
+            </span>
+          )}
+          {project.privateRepository ? (
+            <button
+              type="button"
+              onClick={(event) => event.preventDefault()}
+              title="Private Repository (NDA)"
+              aria-disabled="true"
+              className="flex-1 cursor-not-allowed rounded border border-cyan-400/40 px-3 py-2 text-center text-xs uppercase tracking-[0.2em] text-cyan-300 opacity-50"
+            >
+              GitHub
+            </button>
+          ) : project.githubUrl ? (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="flex-1 rounded border border-cyan-400/40 px-3 py-2 text-center text-xs uppercase tracking-[0.2em] text-cyan-300 transition hover:bg-cyan-400/10"
+            >
+              GitHub
+            </a>
+          ) : (
+            <span className="flex-1 cursor-not-allowed rounded border border-zinc-700 px-3 py-2 text-center text-xs uppercase tracking-[0.2em] text-zinc-500">
+              GitHub unavailable
+            </span>
+          )}
         </div>
       </div>
     </motion.div>
